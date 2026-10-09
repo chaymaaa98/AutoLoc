@@ -12,7 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 @Entity
 @Table(name = "client")
 @Getter
@@ -42,4 +46,6 @@ public class Client {
 
     @Column(nullable = false)
     private LocalDate dateInscription;
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations = new ArrayList<>();
 }
